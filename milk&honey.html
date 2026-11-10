@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="vi" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milk & Honey Coffee | Jesuloveyou</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              warm: {
+                cream: "#FCF8F2", // Nền vàng nhạt kem
+                softBg: "#F7EFE3", // Nền phụ ấm áp
+                darkText: "#3D3228", // Chữ nâu đậm đọc dễ
+                subText: "#706152", // Chữ phụ
+                card: "#FFFFFF", // Trắng ngà card
+              },
+              accent: {
+                gold: "#D49E43", // Vàng mật ong chủ đạo
+                warmGold: "#E0B354", // Vàng sáng ấm
+                darkGold: "#9C6F1E", // Vàng sẫm điểm nhấn
+              },
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "Georgia", "serif"],
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 0.6s ease-out forwards",
+              "slide-up": "slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              "pulse-glow": "pulseGlow 3s infinite",
+              float: "float 4s ease-in-out infinite",
+            },
+            keyframes: {
+              fadeIn: {
+                "0%": { opacity: "0", transform: "scale(0.98)" },
+                "100%": { opacity: "1", transform: "scale(1)" },
+              },
+              slideUp: {
+                "0%": { opacity: "0", transform: "translateY(25px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              pulseGlow: {
+                "0%, 100%": { boxShadow: "0 0 20px rgba(212, 158, 67, 0.2)" },
+                "50%": { boxShadow: "0 0 35px rgba(212, 158, 67, 0.4)" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #fcf8f2;
+        color: #3d3228;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        overflow-x: hidden;
+        user-select: none;
+      }
+
+      .bg-warm-pattern {
+        background-color: #fcf8f2;
+        background-image:
+          radial-gradient(
+            circle at 10% 10%,
+            rgba(224, 179, 84, 0.18) 0%,
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 90% 90%,
+            rgba(252, 240, 220, 0.8) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 255, 255, 0.6) 0%,
+            transparent 65%
+          );
+      }
+
+      .glass-panel-light {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(224, 179, 84, 0.25);
+        box-shadow: 0 15px 35px rgba(156, 111, 30, 0.08);
+      }
+
+      .text-shadow-warm {
+        text-shadow: 0 2px 10px rgba(212, 158, 67, 0.25);
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(247, 239, 227, 0.5);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(212, 158, 67, 0.4);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(212, 158, 67, 0.7);
+      }
+    </style>
+  </head>
+  <body
+    class="h-full min-h-screen bg-warm-pattern text-warm-darkText flex flex-col justify-between relative selection:bg-accent-gold selection:text-white"
+  >
+    <!-- Hidden File Input -->
+    <input
+      type="file"
+      id="globalImageInput"
+      accept="image/*"
+      class="hidden"
+      onchange="handleImageSelected(event)"
+    />
+
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-40 w-full px-4 sm:px-8 py-3 glass-panel-light border-b border-accent-gold/20 flex items-center justify-between transition-all duration-300"
+    >
+      <button
+        onclick="goToPage(1)"
+        class="flex items-center gap-3 group text-left focus:outline-none"
+      >
+        <div
+          class="w-10 h-10 rounded-full border border-accent-gold/40 overflow-hidden bg-black flex-shrink-0 group-hover:scale-105 transition-transform shadow-sm"
+        >
+          <img
+            id="headerLogoImg"
+            src="image_402574.jpg"
+            alt="Milk & Honey Logo"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <h1
+            class="font-serif font-bold text-base sm:text-lg tracking-wide text-warm-darkText leading-tight group-hover:text-accent-gold transition-colors"
+          >
+            MILK & HONEY
+          </h1>
+          <p
+            class="text-[10px] tracking-widest text-warm-subText uppercase font-medium"
+          >
+            Coffee
+          </p>
+        </div>
+      </button>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button
+          onclick="triggerImageUpload()"
+          title="Tải ảnh mới từ thiết bị"
+          class="px-3.5 py-2 rounded-full border border-accent-gold/40 bg-amber-50 hover:bg-amber-100 text-accent-darkGold text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all active:scale-95 shadow-sm"
+        >
+          <i class="fa-solid fa-camera"></i>
+          <span class="hidden sm:inline">Đổi ảnh trang này</span>
+        </button>
+
+        <button
+          onclick="togglePageDrawer()"
+          title="Danh sách trang"
+          class="px-3.5 py-2 rounded-full border border-accent-gold/30 bg-white/80 hover:bg-white text-warm-darkText text-xs sm:text-sm font-medium flex items-center gap-2 transition-all active:scale-95 shadow-sm"
+        >
+          <i class="fa-solid fa-layer-group text-accent-gold"></i>
+          <span class="hidden md:inline">Danh Mục Trang</span>
+          <span
+            id="headerPageBadge"
+            class="bg-accent-gold text-white px-2 py-0.5 rounded-full font-bold text-[11px]"
+            >1/15</span
+          >
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN VIEWPORT -->
+    <main
+      class="flex-1 flex items-center justify-center p-3 sm:p-6 md:p-8 max-w-7xl w-full mx-auto relative z-10"
+    >
+      <div
+        id="slideViewport"
+        class="w-full h-full flex flex-col justify-center items-center min-h-[560px] sm:min-h-[620px]"
+      >
+        <!-- Dynamic Content -->
+      </div>
+    </main>
+
+    <!-- FOOTER NAV -->
+    <footer
+      class="sticky bottom-0 z-40 w-full glass-panel-light border-t border-accent-gold/20 px-4 sm:px-8 py-3 flex flex-col gap-2"
+    >
+      <div
+        class="w-full bg-amber-100/80 h-1.5 rounded-full overflow-hidden border border-accent-gold/20"
+      >
+        <div
+          id="progressBar"
+          class="bg-gradient-to-r from-accent-gold to-yellow-500 h-full w-1/15 transition-all duration-500 ease-out"
+        ></div>
+      </div>
+
+      <div class="flex items-center justify-between text-xs sm:text-sm">
+        <button
+          id="prevBtn"
+          onclick="prevPage()"
+          class="px-4 py-2 rounded-xl bg-white hover:bg-amber-50 disabled:opacity-40 disabled:cursor-not-allowed border border-accent-gold/25 text-warm-darkText font-medium flex items-center gap-2 transition-all active:scale-95 shadow-sm"
+        >
+          <i class="fa-solid fa-arrow-left text-accent-gold"></i>
+          <span class="hidden sm:inline">Trang Trước</span>
+        </button>
+
+        <div
+          class="flex items-center gap-2 font-mono text-warm-darkText bg-amber-50/80 px-3.5 py-1.5 rounded-lg border border-accent-gold/25 shadow-inner"
+        >
+          <i class="fa-regular fa-compass text-accent-gold"></i>
+          <span
+            >Trang
+            <strong
+              id="currentPageNum"
+              class="text-accent-darkGold text-sm sm:text-base font-extrabold"
+              >1</strong
+            >
+            / 15</span
+          >
+        </div>
+
+        <button
+          id="nextBtn"
+          onclick="nextPage()"
+          class="px-4 py-2 rounded-xl bg-accent-gold hover:bg-yellow-600 text-white font-bold flex items-center gap-2 transition-all shadow-md shadow-amber-900/10 active:scale-95"
+        >
+          <span class="hidden sm:inline">Trang Sau</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- PAGE DRAWER -->
+    <div
+      id="pageDrawer"
+      class="fixed inset-0 z-50 bg-amber-950/20 backdrop-blur-md hidden transition-opacity duration-300 flex items-center justify-center p-4"
+    >
+      <div
+        class="glass-panel-light rounded-3xl p-6 sm:p-8 max-w-4xl w-full max-h-[85vh] flex flex-col gap-6 border border-accent-gold/30 shadow-2xl relative animate-slide-up"
+      >
+        <button
+          onclick="togglePageDrawer()"
+          class="absolute top-5 right-5 text-warm-subText hover:text-warm-darkText text-xl w-8 h-8 rounded-full bg-amber-100/60 hover:bg-amber-200/60 flex items-center justify-center transition"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div
+          class="flex items-center justify-between border-b border-accent-gold/15 pb-3"
+        >
+          <div>
+            <h3
+              class="font-serif text-2xl font-bold text-accent-darkGold flex items-center gap-2"
+            >
+              <i class="fa-solid fa-layer-group"></i> Quản Lý Tất Cả Các Trang
+              (15 Trang)
+            </h3>
+            <p class="text-warm-subText text-xs sm:text-sm mt-1">
+              Bấm vào từng trang để chuyển nhanh hoặc chọn ảnh trực tiếp cho
+              từng trang.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="pageGrid"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 overflow-y-auto pr-1"
+        ></div>
+
+        <div class="pt-2 border-t border-accent-gold/15 flex justify-end">
+          <button
+            onclick="togglePageDrawer()"
+            class="px-5 py-2 rounded-xl bg-amber-100 hover:bg-amber-200/80 text-warm-darkText text-xs sm:text-sm font-semibold"
+          >
+            Đóng
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // DỮ LIỆU BAN ĐẦU CHO 15 TRANG
+      const pagesData = [
+        {
+          type: "cover",
+          title: "Milk & Honey Coffee.",
+          subtitle: "HÃY CHILL CÙNG NHỮNG NGƯỜI BẠN TỐT NHẤT THẾ GIAN",
+          description:
+            "Chào mừng bạn đến với không gian cà phê ấm áp, tràn ngập vui vẻ và những khoảnh khắc bình yên.",
+          image: "image_402574.jpg",
+          buttonText: "Đấm Vào Đây",
+        },
+        {
+          type: "staff",
+          name: "Tuan Bui",
+          role: "JESULOVEYOU",
+          quote: "Muốn đi nhanh thì đi một mình, muốn đi xa thì đi xe máy.",
+          image: "image_402593.jpg",
+        },
+        {
+          type: "staff",
+          name: "Gillian Wong",
+          role: " JESULOVEYOU",
+          quote:
+            "Điều quan trọng không phải là bạn đánh mạnh đến đâu, mà là bạn có thể chịu đựng bao nhiêu cú đánh của cuộc đời, rồi vẫn kiên cường đứng dậy và tiếp tục tiến về phía trước.",
+          image: "image_402597.jpg",
+        },
+        {
+          type: "staff",
+          name: "Mason",
+          role: "JESULOVEYOU",
+          quote:
+            "Tôi không sợ người luyện tập 10.000 cú đá chỉ một lần, mà chỉ sợ người thực hành một cú đá 10.000 lần.",
+          image: "image_4025af.jpg",
+        },
+        {
+          type: "staff",
+          name: "Twee",
+          role: "JESULOVEYOU",
+          quote:
+            " Đừng bao giờ xem thường người im lặng, vì họ thường không nói gì.",
+          image: "image_4025b2.jpg",
+        },
+        {
+          type: "staff",
+          name: "Tyler",
+          role: "JESULOVEYOU",
+          quote: "Không đầy đủ về vật chất, nhưng chưa từng thiếu chất riêng.",
+          image: "image_4025b5.jpg",
+        },
+        {
+          type: "staff",
+          name: "Sister Trang",
+          role: "JESULOVEYOU",
+          quote:
+            "Cuộc sống sẽ chẳng thay đổi, cho đến khi bạn thay đổi chính bản thân mình.",
+          image: "image_4025cf.jpg",
+        },
+        {
+          type: "staff",
+          name: "Min",
+          role: "JESULOVEYOU",
+          quote: "Do not miss any opportunity.",
+          image: "image_4025d4.jpg",
+        },
+        {
+          type: "staff",
+          name: "Alice",
+          role: "JESULOVEYOU",
+          quote:
+            "Thế giới miệt mài tìm kiếm điều phi thường, tôi thì lặng lẽ nâng niu những nụ cười ngày thường.",
+          image: "image_4025ec.jpg",
+        },
+        {
+          type: "staff",
+          name: "Tracy",
+          role: "JESULOVEYOU",
+          quote:
+            "Không phải mọi hành trình đều rực rỡ, có những hành trình chỉ cần không bỏ cuộc đã là một chiến thắng.",
+          image: "image_4025f0.jpg",
+        },
+        {
+          type: "staff",
+          name: "Harry",
+          role: "JESULOVEYOU",
+          quote:
+            "Cây trồng đúng chỗ sẽ nở hoa; người sống đúng môi trường sẽ tỏa sáng.",
+          image: "image_4025b2.jpg",
+        },
+        {
+          type: "team_photo",
+          title: "ĐẠI GIA ĐÌNH MILK & HONEY",
+          subtitle: "Những Gương Mặt Luôn Sẵn Sàng Chào Đón Bạn",
+          description:
+            "Chúng tôi là một tập thể trẻ trung, nhiệt huyết và có tấm lòng bao la bát ngát bạt ngàn.",
+          image: "image_4025b2.jpg",
+        },
+        {
+          type: "about_store",
+          title: "GIỚI THIỆU VỀ QUÁN MILK & HONEY",
+          subtitle: "Thiên Đường Của Sự Yêu Thương",
+          description:
+            "Mang sứ mệnh của Chúa tạo ra một không gian ấm cúm, một nơi không ngừng học hỏi và cùng nhàu phát triển mỗi ngày . đem lại không gian thư giãn, thoải mái và Tạo ra giá trị cho cuộc sống",
+          highlights: [
+            "Cà Phê Rang Tay Chất Lượng Cao",
+            "Không Gian Gỗ Ấm Cúng & Thư Giãn",
+            "Đội Ngũ Thân Thiện, Phục Vụ Tận Tâm",
+            "Nơi Kết Nối & Sẻ Chia Những Câu Chuyện",
+          ],
+          image: "image_4025fa.jpg",
+        },
+        {
+          type: "menu",
+          title: "MENU ĐỒ UỐNG & BÁNH NGỌT",
+          subtitle: "Hương Vị Tinh Tế & Nguyên Liệu Hảo Hạng",
+          categories: [
+            {
+              name: "Cà Phê",
+              icon: "fa-mug-hot",
+              items: [
+                "Hot Late",
+                "Bạc Xỉu",
+                "Honey coffee",
+                "Caramel popcon late",
+              ],
+            },
+            {
+              name: "Smoothie",
+              icon: "fa-blender",
+              items: [
+                "Xoài kem chanh",
+                "Caramel đá xay",
+                "Đá xay bánh quy bơ",
+                "Chuối dừa",
+              ],
+            },
+            {
+              name: "Milk/MIlk Tea",
+              icon: "fa-glass-water",
+              items: [
+                "Trà trái cây nhiệt đới",
+                "Trà vải hoa hồng",
+                "Trà sữa M&H",
+                "Trà sữa olong gạo rang",
+              ],
+            },
+            {
+              name: "Matcha",
+              icon: "fa-leaf",
+              items: [
+                "Matcha Latte",
+                "Matcha creamy",
+                "Matcha coldwhisk",
+                "Matcha Ice cream",
+              ],
+            },
+            {
+              name: "Bánh Ngọt",
+              icon: "fa-cookie-bite",
+              items: [
+                "Brownie Cheessecake",
+                "Cookie Red Velvet",
+                "Cookie double choco",
+                "Cookie Classic",
+                "Banana Cake",
+              ],
+            },
+          ],
+        },
+      ];
+
+      let currentPage = 1;
+      let uploadTargetPageIndex = 1;
+      const totalPages = pagesData.length;
+
+      function triggerImageUpload(targetPage = null) {
+        uploadTargetPageIndex = targetPage ? targetPage : currentPage;
+        document.getElementById("globalImageInput").click();
+      }
+
+      function handleImageSelected(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const imageUrl = e.target.result;
+            pagesData[uploadTargetPageIndex - 1].image = imageUrl;
+
+            if (uploadTargetPageIndex === 1) {
+              document.getElementById("headerLogoImg").src = imageUrl;
+            }
+
+            renderPage(currentPage);
+            showToast(
+              `Đã thay đổi ảnh thành công cho Trang ${uploadTargetPageIndex}!`,
+            );
+          };
+          reader.readAsDataURL(file);
+        }
+        event.target.value = "";
+      }
+
+      function renderPage(pageIndex) {
+        const data = pagesData[pageIndex - 1];
+        const viewport = document.getElementById("slideViewport");
+
+        if (data.type === "cover") {
+          viewport.innerHTML = `
+            <div class="flex flex-col items-center justify-center text-center max-w-3xl mx-auto py-6 animate-fade-in my-auto">
+                <div class="relative mb-8 group">
+                    <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-accent-gold/30 to-amber-300/30 blur-xl opacity-80 group-hover:opacity-100 transition duration-1000 animate-pulse-glow"></div>
+                    <div class="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full border-4 border-accent-gold/80 p-1.5 bg-black shadow-2xl overflow-hidden transform transition duration-500 hover:scale-105">
+                        <img src="${data.image}" alt="Milk & Honey Logo" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <button onclick="triggerImageUpload(1)" class="absolute bottom-2 right-2 bg-accent-gold text-white p-2.5 rounded-full shadow-lg hover:scale-110 transition border border-white" title="Tải ảnh Logo mới">
+                      <i class="fa-solid fa-camera text-sm"></i>
+                    </button>
+                </div>
+
+                <h1 class="font-serif text-3xl sm:text-5xl font-extrabold tracking-tight text-warm-darkText mb-3 text-shadow-warm">
+                    ${data.title}
+                </h1>
+                <p class="text-accent-darkGold font-serif italic text-lg sm:text-2xl mb-4 tracking-wide font-semibold">
+                    "${data.subtitle}"
+                </p>
+                <p class="text-warm-subText text-sm sm:text-base leading-relaxed max-w-xl mb-8 font-normal px-4">
+                    ${data.description}
+                </p>
+
+                <button onclick="goToPage(2)"
+                        class="px-8 py-4 rounded-full bg-gradient-to-r from-accent-gold via-amber-500 to-accent-gold hover:from-amber-500 hover:to-accent-gold text-white font-bold text-base sm:text-lg shadow-xl shadow-amber-900/15 flex items-center gap-3 transform transition-all hover:-translate-y-1 active:scale-95 animate-float">
+                    <span>${data.buttonText}</span>
+                    <i class="fa-solid fa-circle-arrow-right text-xl"></i>
+                </button>
+            </div>
+          `;
+        } else if (data.type === "staff") {
+          viewport.innerHTML = `
+            <div class="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center animate-slide-up my-auto">
+                <div class="md:col-span-6">
+                    <div class="glass-panel-light p-2.5 sm:p-3 rounded-3xl shadow-xl border border-accent-gold/30 relative group">
+                        <div class="relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden bg-amber-50">
+                            <img src="${data.image}" alt="${data.name}" class="w-full h-full object-cover">
+                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-accent-gold/30 text-xs font-mono text-accent-darkGold font-bold shadow-sm">
+                                Trang ${pageIndex} / ${totalPages}
+                            </div>
+                            <button onclick="triggerImageUpload(${pageIndex})" class="absolute bottom-3 right-3 bg-accent-gold text-white font-bold text-xs px-3 py-2 rounded-xl shadow-lg flex items-center gap-1.5 transition hover:bg-yellow-600">
+                              <i class="fa-solid fa-camera"></i>
+                              <span>Thay Ảnh</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-6 flex flex-col justify-center text-left space-y-4 px-2 sm:px-4">
+                    <div>
+                        <span class="px-3.5 py-1 rounded-full bg-amber-100 text-accent-darkGold text-xs font-bold uppercase tracking-wider border border-accent-gold/30 shadow-sm">
+                            ${data.role}
+                        </span>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-warm-darkText font-extrabold mt-2 tracking-wide">
+                            ${data.name}
+                        </h2>
+                    </div>
+
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 border border-accent-gold/40 flex items-center justify-center text-accent-darkGold text-lg shadow-sm">
+                        <i class="fa-solid fa-quote-left"></i>
+                    </div>
+
+                    <blockquote class="font-serif text-xl sm:text-2xl text-warm-darkText font-medium leading-relaxed italic">
+                        "${data.quote}"
+                    </blockquote>
+
+                    <div class="pt-2 flex items-center gap-3">
+                        <div class="h-0.5 w-12 bg-accent-gold"></div>
+                        <span class="text-accent-darkGold font-sans font-bold text-xs uppercase tracking-widest">
+                            Milk & Honey Team
+                        </span>
+                    </div>
+                </div>
+            </div>
+          `;
+        } else if (data.type === "team_photo") {
+          viewport.innerHTML = `
+            <div class="w-full h-full min-h-[78vh] sm:min-h-[82vh] rounded-3xl overflow-hidden glass-panel-light border border-accent-gold/30 relative shadow-2xl flex flex-col justify-end animate-fade-in group my-auto">
+                <div class="absolute inset-0 w-full h-full overflow-hidden bg-black">
+                    <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover transform transition duration-1000 group-hover:scale-105 opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-warm-cream via-warm-cream/80 to-transparent"></div>
+                </div>
+
+                <div class="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-accent-gold/30 text-xs font-mono text-accent-darkGold font-bold flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-users text-accent-gold"></i>
+                    <span>Trang 13 / ${totalPages} • Tập Thể Quán</span>
+                </div>
+
+                <button onclick="triggerImageUpload(13)" class="absolute top-4 right-4 z-20 bg-accent-gold text-white font-bold text-xs px-3.5 py-2 rounded-full shadow-lg flex items-center gap-1.5 transition hover:scale-105">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Đổi ảnh tập thể</span>
+                </button>
+
+                <div class="relative z-10 p-6 sm:p-10 md:p-12 max-w-4xl mx-auto text-center flex flex-col items-center gap-4">
+                    <span class="px-3.5 py-1 rounded-full bg-amber-100/90 text-accent-darkGold text-xs font-bold uppercase tracking-wider border border-accent-gold/40 shadow-sm">
+                        ${data.subtitle}
+                    </span>
+
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-warm-darkText font-extrabold tracking-wide text-shadow-warm">
+                        ${data.title}
+                    </h2>
+
+                    <p class="text-warm-subText text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
+                        ${data.description}
+                    </p>
+
+                    <button onclick="goToPage(14)"
+                            class="mt-2 px-6 py-3 rounded-full bg-accent-gold hover:bg-yellow-600 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition active:scale-95">
+                        <span>Khám Phá Về Quán</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+          `;
+        } else if (data.type === "about_store") {
+          viewport.innerHTML = `
+            <div class="w-full h-full min-h-[78vh] sm:min-h-[82vh] rounded-3xl overflow-hidden glass-panel-light border border-accent-gold/30 relative shadow-2xl flex flex-col justify-end animate-fade-in group my-auto">
+                <div class="absolute inset-0 w-full h-full overflow-hidden bg-black">
+                    <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover transform transition duration-1000 group-hover:scale-105 opacity-85">
+                    <div class="absolute inset-0 bg-gradient-to-t from-warm-cream via-warm-cream/85 to-transparent"></div>
+                </div>
+
+                <div class="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-accent-gold/30 text-xs font-mono text-accent-darkGold font-bold flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-store text-accent-gold"></i>
+                    <span>Trang 14 / ${totalPages} • Giới Thiệu Quán</span>
+                </div>
+
+                <button onclick="triggerImageUpload(14)" class="absolute top-4 right-4 z-20 bg-accent-gold text-white font-bold text-xs px-3.5 py-2 rounded-full shadow-lg flex items-center gap-1.5 transition hover:scale-105">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Đổi ảnh quán</span>
+                </button>
+
+                <div class="relative z-10 p-6 sm:p-10 md:p-12 max-w-4xl mx-auto text-center flex flex-col items-center gap-4">
+                    <span class="px-3.5 py-1 rounded-full bg-amber-100/90 text-accent-darkGold text-xs font-bold uppercase tracking-wider border border-accent-gold/40 shadow-sm">
+                        ${data.subtitle}
+                    </span>
+
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-warm-darkText font-extrabold tracking-wide text-shadow-warm">
+                        ${data.title}
+                    </h2>
+
+                    <p class="text-warm-subText text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
+                        ${data.description}
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-2xl mt-2 text-left">
+                        ${data.highlights
+                          .map(
+                            (h) => `
+                            <div class="p-3 rounded-2xl bg-white/90 backdrop-blur-md border border-accent-gold/25 flex items-center gap-2.5 text-xs font-semibold text-warm-darkText shadow-sm">
+                                <i class="fa-solid fa-circle-check text-accent-gold text-sm flex-shrink-0"></i>
+                                <span>${h}</span>
+                            </div>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+
+                    <button onclick="goToPage(15)"
+                            class="mt-2 px-6 py-3 rounded-full bg-accent-gold hover:bg-yellow-600 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition active:scale-95">
+                        <span>Xem Menu Đồ Uống & Bánh</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+          `;
+        } else if (data.type === "menu") {
+          viewport.innerHTML = `
+            <div class="w-full max-w-5xl mx-auto p-6 sm:p-8 rounded-3xl glass-panel-light border border-accent-gold/30 shadow-2xl animate-fade-in my-auto">
+                <div class="text-center mb-6">
+                    <span class="px-3.5 py-1 rounded-full bg-amber-100 text-accent-darkGold text-xs font-bold uppercase tracking-wider border border-accent-gold/30 shadow-sm">
+                        ${data.subtitle}
+                    </span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-warm-darkText font-extrabold mt-2">
+                        ${data.title}
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    ${data.categories
+                      .map(
+                        (cat) => `
+                        <div class="p-4 rounded-2xl bg-white/90 border border-accent-gold/20 flex flex-col shadow-sm">
+                            <div class="flex items-center gap-2.5 mb-3 border-b border-accent-gold/15 pb-2">
+                                <div class="w-8 h-8 rounded-lg bg-amber-100 border border-accent-gold/40 flex items-center justify-center text-accent-darkGold">
+                                    <i class="fa-solid ${cat.icon}"></i>
+                                </div>
+                                <h3 class="font-serif font-bold text-base text-accent-darkGold">${cat.name}</h3>
+                            </div>
+                            <ul class="space-y-2">
+                                ${cat.items
+                                  .map(
+                                    (item) => `
+                                    <li class="flex items-center justify-between text-xs text-warm-darkText font-medium">
+                                        <span class="flex items-center gap-1.5">
+                                            <i class="fa-solid fa-caret-right text-accent-gold text-[10px]"></i>
+                                            ${item}
+                                        </span>
+                                    </li>
+                                `,
+                                  )
+                                  .join("")}
+                            </ul>
+                        </div>
+                    `,
+                      )
+                      .join("")}
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-accent-gold/15 flex items-center justify-center gap-4">
+                    <button onclick="goToPage(1)"
+                            class="px-6 py-2.5 rounded-full bg-accent-gold hover:bg-yellow-600 text-white font-bold text-xs sm:text-sm flex items-center gap-2 transition active:scale-95 shadow-md">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Quay Về Trang Bìa</span>
+                    </button>
+                </div>
+            </div>
+          `;
+        }
+
+        document.getElementById("currentPageNum").innerText = pageIndex;
+        document.getElementById("headerPageBadge").innerText =
+          `${pageIndex}/${totalPages}`;
+
+        const progressPercent = (pageIndex / totalPages) * 100;
+        document.getElementById("progressBar").style.width =
+          `${progressPercent}%`;
+
+        document.getElementById("prevBtn").disabled = pageIndex === 1;
+        document.getElementById("nextBtn").disabled = pageIndex === totalPages;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function goToPage(pageNum) {
+        if (pageNum >= 1 && pageNum <= totalPages) {
+          currentPage = pageNum;
+          renderPage(currentPage);
+        }
+      }
+
+      function nextPage() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderPage(currentPage);
+        }
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          renderPage(currentPage);
+        }
+      }
+
+      function populatePageDrawer() {
+        const pageGrid = document.getElementById("pageGrid");
+        pageGrid.innerHTML = "";
+
+        pagesData.forEach((item, index) => {
+          const pageNum = index + 1;
+          const isCurrent = pageNum === currentPage;
+
+          const card = document.createElement("div");
+          card.className = `p-3 rounded-2xl transition border text-left flex flex-col justify-between h-28 relative ${
+            isCurrent
+              ? "bg-amber-100 border-accent-gold text-warm-darkText ring-2 ring-accent-gold/40 shadow-sm"
+              : "bg-white/80 border-accent-gold/20 hover:bg-amber-50 text-warm-darkText"
+          }`;
+
+          let titleText = "";
+          if (item.type === "cover") titleText = "Trang Bìa Logo";
+          else if (item.type === "staff") titleText = item.name;
+          else if (item.type === "team_photo") titleText = "Ảnh Tập Thể";
+          else if (item.type === "about_store") titleText = "Giới Thiệu Quán";
+          else if (item.type === "menu") titleText = "Menu Đồ Uống";
+
+          card.innerHTML = `
+            <div onclick="goToPage(${pageNum}); togglePageDrawer();" class="cursor-pointer flex-1">
+                <span class="text-[10px] font-mono font-bold text-accent-darkGold uppercase">Trang ${pageNum}</span>
+                <p class="font-serif font-bold text-xs line-clamp-1 mt-0.5 text-warm-darkText">${titleText}</p>
+            </div>
+            ${
+              item.type !== "menu"
+                ? `<button onclick="event.stopPropagation(); triggerImageUpload(${pageNum});" class="mt-1 bg-accent-gold hover:bg-yellow-600 text-white text-[10px] font-bold py-1 px-2 rounded-lg flex items-center justify-center gap-1 transition shadow-sm">
+                   <i class="fa-solid fa-camera"></i> Chọn Ảnh
+                 </button>`
+                : ""
+            }
+          `;
+          pageGrid.appendChild(card);
+        });
+      }
+
+      function togglePageDrawer() {
+        const drawer = document.getElementById("pageDrawer");
+        if (drawer.classList.contains("hidden")) {
+          populatePageDrawer();
+          drawer.classList.remove("hidden");
+        } else {
+          drawer.classList.add("hidden");
+        }
+      }
+
+      function showToast(msg) {
+        const toast = document.createElement("div");
+        toast.className =
+          "fixed top-20 right-5 z-50 bg-accent-gold text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-xl flex items-center gap-2 animate-slide-up border border-white/40";
+        toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${msg}`;
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+          toast.classList.add(
+            "opacity-0",
+            "transition-opacity",
+            "duration-300",
+          );
+          setTimeout(() => toast.remove(), 300);
+        }, 2500);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") nextPage();
+        if (e.key === "ArrowLeft") prevPage();
+        if (e.key === "Escape")
+          document.getElementById("pageDrawer").classList.add("hidden");
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+      document.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+      document.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchEndX < touchStartX - 50) nextPage();
+          if (touchEndX > touchStartX + 50) prevPage();
+        },
+        { passive: true },
+      );
+
+      window.onload = function () {
+        renderPage(1);
+      };
+    </script>
+  </body>
+</html>
